@@ -1,0 +1,8 @@
+<%# cache(collection_cache_key(parent, @category || @sticker)) do %>
+	<div class="hide-on-phones">
+		<%= render_parent_categories(:title => '') %>
+	</div>
+	<%= render_slideshow_for(parent) %>
+	<%= render_html_text(parent.body) %>
+	<%= render_collection %>
+<%# end %>

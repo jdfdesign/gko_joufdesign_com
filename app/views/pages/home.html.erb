@@ -1,0 +1,40 @@
+<%
+@projects = site.projects.latest(4)
+@features = site.features.live
+%>
+<% if @features.any? %>
+<div class="row-fluid">
+  <div class="span12"  id="home-features">
+    <%= render 'shared/carousel', :features => @features %>
+  </div>
+</div>
+<% else %>
+<div class="row-fluid">
+  <div class="span12"  id="home-orbit">
+    <%= render :partial => "/shared/circular_rotator" %>
+  </div>
+</div>
+<% end %>
+<% if @projects.try(:any?) %> 
+<div class="row-fluid">
+  <div class="span12"  id="recent-works"> 
+    <%= grid_tag(4) do %>
+       <% @projects.each do |g| %>
+       <li>
+		 <div class="thumbnail"> 
+         	<% if g.thumbnail %>
+          	<div class="image"> 
+            	<%= link_to(image_fu(g.thumbnail, "230x162#"), url_for([g.section, g])) %>
+          	</div>
+         	<% end %>
+         	<h3 class="title">
+           		<%= link_to(g.title, url_for([g.section, g]), :class => 'entry-title', :rel => 'bookmark') %>
+         	</h3>
+		</div>
+       </li>
+       <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %> 
+<%= render_html_text(resource.body) unless resource.body.blank? %>

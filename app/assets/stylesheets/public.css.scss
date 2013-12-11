@@ -1,0 +1,198 @@
+@import "variable";
+@import "twitter.bootstrap.2.2.1/bootstrap-awesome";
+@import "gko/public/base";
+
+.btn:focus,
+a:focus {
+  outline: 0;
+}
+
+body {
+	text-shadow: 0px 1px 0 white;
+	border-top: 6px solid $themeColor; 
+}
+
+#wrapper-wide-body {
+	max-width: 980px;
+	@include box-sizing(border-box);
+	@include center-block();
+}
+
+.navbar {
+	
+	.navbar-inner {
+		@include border-radius(none);
+		@include box-shadow(none);
+	}
+	
+	.brand {
+		float: none;
+		text-align: center;
+		margin: 12px auto;
+		@include size(130px, 170px);
+		a {
+			padding: 0;
+			margin: 0;
+			background: transparent image-url("logo.png") center center no-repeat;
+			cursor: pointer;
+			overflow: hidden;
+			display: block;
+			text-align: center;
+			@include size(130px, 170px);
+			@include hide-text;
+		}
+	}
+	
+	.navbar-inner {
+	  text-align:center;
+	}
+
+	.nav-collapse {
+		border-top: 1px solid darken($bodyBackground, 5%); 
+		border-bottom: 1px solid darken($bodyBackground, 5%); 
+		.nav,
+		.nav > li {
+		  float:none;
+		  display:inline-block;
+		  *display:inline; /* ie7 fix */
+		  *zoom:1; /* hasLayout ie7 trigger */
+		  vertical-align: top;
+		}
+		
+		.nav > li.dropdown .caret {
+			display: none;
+		}
+
+		.nav > li > a,
+		.dropdown-menu a {
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			font-size: 11px;
+		}
+	}
+	
+	.header-top {
+		position: absolute;
+		right: 12px;
+		top: 18px;
+		a.facebook {
+			font-size: 30px;
+			&:hover {
+				text-decoration: none;
+			};
+		}
+	}	
+}
+
+.carousel-inner {
+	text-shadow: none;
+	background-color: $bodyBackground;
+	border: 4px solid $bodyBackground;
+	@include border-radius(none);
+	@include box-shadow(rgba(0, 0, 0, 0.3) 0px 1px 4px);
+}
+
+.parent-categories {
+	text-align:center;
+	border-bottom: 1px solid darken($bodyBackground, 5%); 
+	.nav {
+		margin-bottom: 0;
+	}
+	.nav,
+	.nav > li {
+	  float:none;
+	  display:inline-block;
+	  *display:inline; /* ie7 fix */
+	  *zoom:1; /* hasLayout ie7 trigger */
+	  vertical-align: top;
+	}
+	
+	.nav > li > a {
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-size: 11px;
+		padding: 10px 15px 10px;
+	}
+
+	.nav > li.active > a {
+		color: $highlightColor;
+	}
+	
+	
+}
+
+.thumbnail {
+	border: none;
+	@include border-radius(none);
+	@include box-shadow(none);
+	
+	.image {
+		border: 1px solid darken($bodyBackground, 5%); 
+	}
+	.title {
+		font-size: $baseFontSize;
+		line-height: $baseLineHeight;
+		text-transform: uppercase;
+		margin: 0;
+		a {
+			&:hover {
+				text-decoration: none;
+			};
+		}
+	}
+	.links {
+		display: none;
+	}
+	&:hover {
+		@include opacity(85);
+	};
+}
+
+.footer {
+	padding: $baseLineHeight 0;
+	text-align:center;
+	border-top: 1px solid darken($bodyBackground, 5%); 
+	border-bottom: 1px solid darken($bodyBackground, 5%); 
+	.nav {
+		float:right;
+	}
+	.nav > li {
+	  float:none;
+	  display:inline-block;
+	  *display:inline; /* ie7 fix */
+	  *zoom:1; /* hasLayout ie7 trigger */
+	  vertical-align: top;
+	}
+	.nav > li > a {
+		text-shadow: none;
+		font-style: italic;
+		font-size: 11px;
+		text-transform: lowercase;
+	}
+}
+.fb-like {
+	float: left;
+	margin-top: 6px;
+}
+form.newsletter_subscription {
+	margin: 0;
+	.input-append {
+		margin: 0;
+	}
+}
+h3 {
+	line-height: 30px;
+	font-size: 18px;
+}
+
+section.projects,
+article.project {
+	padding: $baseLineHeight 0;
+}
+
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+
+@import "twitter.bootstrap.2.2.1/bootstrap-responsive";
+@import "gko/default_responsive";
