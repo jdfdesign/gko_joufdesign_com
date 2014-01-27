@@ -188,6 +188,12 @@ h3 {
 section.projects,
 article.project {
 	padding: $baseLineHeight 0;
+  .page-title {
+    font-size: 18px;
+    line-height: $baseLineHeight;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
 }
 
 /*-----------------------------------------
