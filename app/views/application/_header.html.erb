@@ -1,34 +1,21 @@
+<%# cache([site, I18n.locale, 'header']) do %>
 <!-- Header
 ================================================== -->
-<% cache([action_name, site, I18n.locale, 'header4']) do %>
-
-<header class="navbar hide-on-print">
-  <div class="navbar-inner">
-    <div class="row-fluid">
-      <div class="header-top">
-          <%= link_to(	'https://www.facebook.com/joufdesign', 
-						:target => :blank,
-						:class => 'facebook' ) do %>
-			<i class='icon-facebook'></i>
-		  <% end %>
-
-      </div>
-      <div class="header-nav">
-        <!-- Be sure to leave the brand out there if you want it shown -->
-        <%= render 'site_title' %>
-		    <%= content_tag(:h4, site.subtitle.html_safe, :id => "site-subtitle") if site.subtitle.present? %>
-
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span><%= t(:navigation_menu) %><i class="icon-chevron-down icon-white"></i></span>
-        </a>
-        <!-- Everything you want hidden at 940px or less, place within here -->
-        <div class="nav-collapse">
-          <!-- .nav, .navbar-search, .navbar-form, etc -->
-          <%= render "primary_menu" %>
-        </div>
-      </div>
+<header class="navbar navbar-default hidden-print">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to(image_tag("logo.png"), root_url, :alt => site.title, :class => "navbar-brand") %>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
+    <nav class="collapse navbar-collapse">
+      <%= render 'menu', :sections => site.primary_menu, :menu_name => 'navbar-nav navbar-right' %>
+    </nav>
+    
   </div>
 </header>
-<% end %>
+<%# end %>

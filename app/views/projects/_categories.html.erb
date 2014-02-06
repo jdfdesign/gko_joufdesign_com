@@ -1,0 +1,15 @@
+<% if @parent_categories.try(:any?) %>
+  <!-- Begin Categories -->
+  <div class="container hidden-print">
+    <div class="row">
+    	<div class="col-xs-12">
+        <nav id="categories-filter">
+          <ul class="nav categories-nav">
+            <li class="filter" data-filter="all"><%= link_to(t(:"categories.all"), "#") %></li>
+            <%= render :partial => "projects/category", :collection => @parent_categories, :as => :category %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div> 
+<% end %>

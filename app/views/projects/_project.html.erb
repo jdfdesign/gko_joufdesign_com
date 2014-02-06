@@ -1,0 +1,14 @@
+<article class="col-xs-12 col-sm-6 col-md-4 mix <%= project.categories.map {|c| c.title.parameterize }.join(" ") %>">
+  <div class="post-item portfolio-post-item">
+  <%= link_to(project.public_url, :data => { :remote => true }) do %>
+    <%= content_tag(:div, :class => "post-image") do %>
+      <%#= image_tag(project.thumbnail.thumbnail.black_and_white("450x325#").url(), :alt => project.thumbnail.title ) %>
+      <%= image_tag(project.thumbnail.thumbnail("450x325#").url(), :alt => project.thumbnail.title ) %>
+    <% end if project.thumbnail %>
+    <div class="post-caption">
+      <h3 class="post-title"><%= project.title %></h3>
+      <p class="year"><%= project.preferred_release_date %></p>
+    </div>
+  <% end %>
+  </div>
+</article>

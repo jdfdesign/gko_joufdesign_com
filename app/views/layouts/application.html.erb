@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+<%= render 'head' %>
+<body>
+  <div id="page-wrapper">
+    <%= render "header" %>
+    <section class="main-content">
+      <%= yield %>
+    </section>
+    <%= render 'footer' %> 
+  </div>
+
+  <!-- Begin Project Page -->
+  <div id="project-page">
+    <div id="project-control-bar">
+
+        <div class="col-xs-4">
+          <a href="#" id="prev-project" class="portfolio-control" data-remote="true"><i class="icon-angle-left icon-2x"></i>&nbsp;</a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" id="close-project" class="portfolio-control"><i class="icon-th icon-2x"></i>&nbsp;</a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" id="next-project" class="portfolio-control" data-remote="true">&nbsp;<i class="icon-angle-right icon-2x"></i></a>
+        </div>
+
+    </div>
+    <div id="project-content"></div>
+  </div>
+  <!-- End Project Page -->
+  
+  <!-- Back To Top -->
+  <a id="back-to-top" href="#" class="text-center">
+  	<i class="icon-angle-up icon-2x"></i>
+  </a>
+  <!-- End Back to Top --> 
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <%= render 'javascripts' %> 
+</body>  
+</html>

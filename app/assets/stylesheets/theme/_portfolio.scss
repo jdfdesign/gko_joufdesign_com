@@ -1,0 +1,169 @@
+.thumbnail {
+  h3 {
+    font-size: $font-size-base;
+    line-height: $line-height-computed;
+  }
+}
+
+#project-control-bar {
+  //background-color: $navbar-bg;
+}
+.portfolio-control {
+  font-size: 16px;
+  line-height: 86px;
+  text-transform: uppercase;
+  border-left: 1px solid #f4f4f4;
+  background-color: #f2f2f2;
+  text-align: center;
+  display: block;
+} 
+#related-works {
+  background-color: white;
+  padding-top: $line-height-computed * 4;
+  padding-bottom: $line-height-computed * 4;
+}
+/* PORTFOLIO GRID
+-------------------------------------------------- */ 
+/* MixUp Filtering */
+#projects-container .mix{display: none;opacity: 0;}
+#projects-container [class*="column"] + [class*="column"]:last-child {float: left;}
+select { 
+  color: #fff; 
+  margin-bottom: $line-height-computed;
+  padding: 0 1em; 
+  height: $line-height-computed * 2;
+  outline: none;
+  border: 0;
+  border-radius: 0 !important;
+  background: image-url('arrow-down.png') no-repeat right 0.8em $brand-primary;
+  width: 100%;
+  -webkit-appearance: none; }
+  
+time {
+  color:#f4594e; }
+
+.post-item {
+  position: relative;
+  margin-bottom: 1.5em;
+  background: #2B3033;
+  border: 8px solid #fff;
+  > a {
+    display: block;
+    position: relative; 
+    color: #000;
+  }
+}
+.post-image {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  img { 
+    @include img-responsive;
+    -webkit-filter: grayscale(100%);
+    filter: url("data:image/svg+xml;filter: gray;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); 
+  }
+}
+.no-touch .post-item:hover img, 
+.touch .post-item img {
+  -webkit-filter: grayscale(0%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+}
+.post-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: $line-height-computed / 2;
+  background: #2B3033;
+  a {
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    background: #ed4e6e;
+    color: #fff;
+  }
+}
+
+.post-title {
+  margin: $line-height-computed / 2 0 0 0;
+  padding: 0;
+  color: #fff;
+  font-size: 11px;
+  line-height: $line-height-computed;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  @include text-overflow();
+}
+
+@include effect3();
+
+.project-image {
+  margin-bottom: $line-height-computed;
+  img {
+    @include img-responsive;
+  }
+}
+
+/* PORTFOLIO CATEGORIES
+-------------------------------------------------- */
+// Categories nav links
+//
+// Builds on top of the `.nav` components with it's own modifier class to make
+// the nav the full width
+
+.categories-nav {
+  padding-top: $line-height-computed;
+  padding-bottom: $line-height-computed;
+  margin: 0;
+  @include center-nav();
+  display: none;
+  > li > a {
+    padding: $line-height-computed / 2 0;
+    color: #000;
+    line-height: $line-height-computed;
+    font-size: 12px;
+    font-weight: 700;
+     &:after {
+       content: '/';
+       color: $navbar-default-link-active-bg;
+       padding-left: 10px;
+       padding-right: 10px;
+     }
+
+    &:hover,
+    &:focus {
+      color: $brand-primary;
+      background-color: transparent;
+    }
+  }
+  > li:last-child > a {
+    &:after {
+       content: '';
+       padding-left: 0;
+       padding-right: 0;
+     } 
+  }
+  > .active > a {
+    color: $brand-primary;
+    background-color: transparent;
+    &:hover,
+    &:focus {
+      color: $brand-primary;
+      background-color: transparent;
+    }
+  }
+  > .disabled > a {
+    background-color: transparent;
+    &:hover,
+    &:focus {
+      color: $navbar-default-link-disabled-color;
+      background-color: $navbar-default-link-disabled-bg;
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: $grid-float-breakpoint) {
+    display: block;
+  }
+
+}

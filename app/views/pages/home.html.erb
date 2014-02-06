@@ -1,40 +1,89 @@
-<%
-@projects = site.projects.latest(4)
-@features = site.features.live
-%>
-<% if @features.any? %>
-<div class="row-fluid">
-  <div class="span12"  id="home-features">
-    <%= render 'shared/carousel', :features => @features %>
-  </div>
-</div>
-<% else %>
-<div class="row-fluid">
-  <div class="span12"  id="home-orbit">
-    <%= render :partial => "/shared/circular_rotator" %>
-  </div>
-</div>
-<% end %>
-<% if @projects.try(:any?) %> 
-<div class="row-fluid">
-  <div class="span12"  id="recent-works"> 
-    <%= grid_tag(4) do %>
-       <% @projects.each do |g| %>
-       <li>
-		 <div class="thumbnail"> 
-         	<% if g.thumbnail %>
-          	<div class="image"> 
-            	<%= link_to(image_fu(g.thumbnail, "230x162#"), url_for([g.section, g])) %>
-          	</div>
-         	<% end %>
-         	<h3 class="title">
-           		<%= link_to(g.title, url_for([g.section, g]), :class => 'entry-title', :rel => 'bookmark') %>
-         	</h3>
-		</div>
-       </li>
-       <% end %>
-    <% end %>
-  </div>
-</div>
-<% end %> 
-<%= render_html_text(resource.body) unless resource.body.blank? %>
+<%# cache ['home', site, I18n.locale] do %>
+	<% 
+	@portfolio = site.portfolio
+	@projects = site.projects.latest(6)
+	@features = site.features.live
+	@parent_categories = @portfolio.categories
+	@services = site.sections.named("services").try(:children)
+	%>
+	<% if @features.any? %>
+	<section id="main-carousel">
+    <div class="carousel slide" id="carousel" data-interval="8000">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="item active text-center">
+          <h2>We are JoufDesign</h2>
+          <h2>A creative Communication Agency</h2>
+        </div>
+        <div class="item text-center">
+          <h2>We are JoufDesign</h2>
+          <h2>A creative Communication Agency</h2>
+        </div>
+      </div>
+      <!-- Carousel nav -->
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel" data-slide="next">
+        <span class="icon-next"></span>
+      </a>
+    </div>
+	</section>
+	<% end %>
+	<% if @projects.try(:any?) %>
+	<!-- Begin Projects -->
+	<section id="recent-works">
+    <div class="container">
+  	  <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro text-center">
+          <h1>Recent Works</h1>
+          <p>Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+    	<div id="projects-container" class="container row">
+        <%= render @projects %>
+      </div>
+      <div class="row text-center more-projects-row">
+        <%= link_to("More projects", @portfolio.public_url, :class => "btn btn-primary btn-big") %>
+      </div>
+    </div>
+	</section>
+	<% end %> 
+	<% if @services.try(:any?) %>
+	<!-- Begin Services -->
+	<section id="services-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 intro">
+          <h1>Our Services</h1>
+          <p> I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much sh*t this morning over this case to hand it over to your d*mb a*s.</p>
+        </div>
+      </div>
+      <div class="row">
+    	  <article class="col-xs-12">
+    	    <div class="panel-group" id="services-accordion">
+          <% @services.each do |service| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#services-accordion" href="#<%= dom_id(service) %>">
+                <%= service.title.html_safe %>
+                <span class="pull-right"><i class="icon-plus"></i><i class="icon-minus"></i></span>
+                </a>
+              </div>
+              <div id="<%= dom_id(service) %>" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <%= render_copy_text(service.body) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        </article>
+     </div>
+   </div> 
+  </section>
+	<% end %>
+<%# end %>
