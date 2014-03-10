@@ -8,26 +8,44 @@
 	%>
 	<% if @features.any? %>
 	<section id="main-carousel">
-    <div class="container-fluid">
+    <div class="container-fluid grid">
       <div class="row">
-        <div class="col-xs-12 col-md-7">
+        <% main_feature =  @features.shift %>
+        <div class="col-xs-12 col-md-7" data-image="<%= main_feature.image.url %>">
           <div class="inner">
-          <p>Pour Jouf Design, la marque est au coeur de la stratégie d'image et de communication. Pour des marques fortes, la cohérence des supports d'expression est de mise : cohérence graphique et cohérence stratégique pour des actions de communication qui ont du sens.<br/>La créativité que nous revendiquons, c'est à la fois celle du design et celle de la détermination des outils et des actions de communication. <br/>Implantée à Saint Barthélemy, l'agence a été créée en 2005 par Jean-François Tricot, rejoint en 2007 par Régis Bruggheman.<br/>La complémentarité de leurs parcours et de leurs expertises permet à Jouf Design d'intervenir dans l'ensemble des problématique de Design et de Communication des entreprises et des institutions.</p>
+          <p><%= main_feature.title %></p>
+          <%= link_to(main_feature.owner.public_url) do %>
+            <span class="glyphicon glyphicon-play-circle">&nbsp;</span>
+          <% end %>
           </div>
         </div>
         <div class="col-xs-12 col-md-5">
           <div class="row">
-            <div class="col-xs-12">
+            <% main_feature =  @features.shift %>
+            <div class="col-xs-12" data-image="<%= main_feature.image.url %>">
               <div class="inner">
-                <p>Nouveau design pour le site de François Pecard</p>
+                <p><%= main_feature.title %></p>
+                <%= link_to(main_feature.owner.public_url) do %>
+                  <span class="glyphicon glyphicon-play-circle">&nbsp;</span>
+                <% end %>
               </div>
             </div>
-            <div class="col-xs-12">
+            <% main_feature =  @features.shift %>
+            <div class="col-xs-12" data-image="<%= main_feature.image.url %>">
               <div class="inner">
-                <p>Lancement du site Motoracing</p>
+                <p><%= main_feature.title %></p>
+                <%= link_to(main_feature.owner.public_url) do %>
+                  <span class="glyphicon glyphicon-play-circle">&nbsp;</span>
+                <% end %>
               </div>
             </div>
           </div>
+        </div>
+      	<div id="projects-container" class="row">
+          <%= render @projects %>
+        </div>
+        <div class="row text-center more-projects-row">
+          <%= link_to("More projects", @portfolio.public_url, :class => "btn btn-primary btn-big") %>
         </div>
       </div>
     </div>
@@ -40,7 +58,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-              Conseil en marque
+              <span class="glyphicon glyphicon-tower"></span>&nbsp;Conseil en marque
             </a>
           </h4>
         </div>
@@ -64,7 +82,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                Internet et mobile
+                <span class="glyphicon glyphicon-phone"></span>&nbsp;Internet et mobile
               </a>
             </h4>
           </div>
@@ -87,7 +105,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-              Identité visuelle
+              <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Identité visuelle
             </a>
           </h4>
         </div>
@@ -107,7 +125,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
-              Edition, production, fabrication
+              <span class="glyphicon glyphicon-book"></span>&nbsp;Edition, production, fabrication
             </a>
           </h4>
         </div>
@@ -129,7 +147,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-              Publicité
+              <span class="glyphicon glyphicon-bullhorn"></span>&nbsp;Publicité
             </a>
           </h4>
         </div>
@@ -152,7 +170,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
-              Programmes signalétique
+              <span class="glyphicon glyphicon-flag"></span>&nbsp;Programmes signalétique
             </a>
           </h4>
         </div>
@@ -171,27 +189,7 @@
     </div>
   </section>
 	<% end %>
-	<% if @projects.try(:any?) %>
-	<!-- Begin Projects -->
-	<section id="recent-works">
-    <div class="container">
-  	  <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro text-center">
-          <h1>Recent Works</h1>
-          <p>Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-    	<div id="projects-container" class="container row">
-        <%= render @projects %>
-      </div>
-      <div class="row text-center more-projects-row">
-        <%= link_to("More projects", @portfolio.public_url, :class => "btn btn-primary btn-big") %>
-      </div>
-    </div>
-	</section>
-	<% end %> 
+
 	<% if @services.try(:any?) %>
 	<!-- Begin Services -->
 	<section id="services-section">

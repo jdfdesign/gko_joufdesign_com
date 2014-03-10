@@ -4,19 +4,17 @@ section h1 {
   margin-top: 0;
 }
 
-.grid-fluid {
+.grid {
   .row {
     margin: 0;
+    div[class*='col-'] {
+      padding: 0;
+    }
   }
 }
 #main-carousel { 
-
-  .row {
-    margin: 0;
-  }
   .col-md-7 {
     height: 600px;
-    padding: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url(image_path("image_bg.jpg"));
@@ -24,12 +22,8 @@ section h1 {
     background-color: $theme-secondary-color; 
   }
   .col-md-5 {
-    padding: 0;
-
-    
     .col-xs-12 {
       height: 300px;
-      padding: 0;
       &:first-child {
         background-color: rgba(255, 255, 255, .7);
         background-repeat: no-repeat;

@@ -86,6 +86,12 @@ jQuery(function($){
     THEME.scrollToTop();
     THEME.placeholder();
     THEME.video();
+    $('[data-image]').each(function( index ) {
+      var el = $( this ),
+          src = el.attr("data-image");
+      el.css("background-image", 'url("' + src + '")');
+    });
+
   });
 
 }); 
