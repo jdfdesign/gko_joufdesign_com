@@ -1,57 +1,38 @@
-<% 
-@portfolio = site.portfolio
-@projects = site.projects.latest(6)
-%>
-
 <%# resource_cache(resource) do %>
 <article class='project'>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="page-header">
-          <hr/>
-          <%= render_page_title(resource.title) %>
-        </div>
-        <%= render_copy_text(resource.body) %>
-        <%= link_to("Visiter le site Internet".html_safe, resource.website, 
-          :target => "_blank", :class => "btn btn-default") unless resource.website.blank? %>
-        
-        <div>
-          <span class="share">share:&nbsp;</span>
-          <span class="socials"><a href="#" onclick="
-              window.open(
-                'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-                'facebook-share-dialog', 
-                'width=626,height=436'); 
-              return false;">Facebook</a>, <a href="https://twitter.com/share" data-lang="en" target="_blank">Twitter</a></span>
-         </div>
-      </div>
-    </div>  
-    <div class="row">
-      <div class="col-xs-12">
-        <% resource.images.each do |img| %>
-          <div class="project-image">
-            <%= image_fu(img, "1200x") %>
+  <section class="project-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1><%= resource.title %></h1>
+          <div class="desc">
+          <%= render_copy_text(resource.body) %>
+          <%= link_to("Visiter le site Internet".html_safe, resource.website, 
+            :target => "_blank", :class => "btn btn-default") unless resource.website.blank? %>
           </div>
-        <% end %>
-      </div>
- 
+          <div class="socials">
+            <span class="share">share:&nbsp;</span>
+            <span class="socials"><a href="#" onclick="
+                window.open(
+                  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+                  'facebook-share-dialog', 
+                  'width=626,height=436'); 
+                return false;">Facebook</a>, <a href="https://twitter.com/share" data-lang="en" target="_blank">Twitter</a></span>
+           </div>
+        </div>
+      </div> 
     </div>
-  </div>
+  </section> 
+  <section class="project-images">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <% resource.images.each do |img| %>
+            <%= image_fu(img, "1200x") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
 </article>
-<% if @projects.try(:any?) %>
-<!-- Begin Projects -->
-<section id="related-works">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 intro">
-        <h1>Related Works</h1>
-      </div>
-    </div>
-  	<div id="projects-container" class="container row">
-      <%= render @projects %>
-    </div>
-  </div>
-</section>
-<% end %>
 <%# end %>

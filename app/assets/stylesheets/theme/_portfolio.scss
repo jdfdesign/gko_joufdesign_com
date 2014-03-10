@@ -4,21 +4,45 @@
     line-height: $line-height-computed;
   }
 }
-
+.project-header {
+  padding: $line-height-computed*3 0;
+  h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+}
+.project-images {
+  padding-top: $line-height-computed;
+  background-color: #d9d9d9;
+  img {
+    @include img-responsive;
+    margin-bottom: $line-height-computed;
+  }
+}
 #project-control-bar {
-  //background-color: $navbar-bg;
+  background-color: $body-bg;
+  border-bottom: 1px solid #d9d9d9;
+  .col-xs-4 {
+    padding: 0;
+  }
 }
 .portfolio-control {
   font-size: 16px;
   line-height: 86px;
-  text-transform: uppercase;
-  border-left: 1px solid #f4f4f4;
-  background-color: #f2f2f2;
+  border-left: 1px solid #d9d9d9;
+  background-color: $body-bg;
+  color: #222;
+  text-decoration: none;
   text-align: center;
   display: block;
+  &:hover, &:focus {
+    color: #222;
+    background-color: #fff;
+    text-decoration: none;
+  }
 } 
 #related-works {
-  background-color: white;
+  background-color: #fff;
   padding-top: $line-height-computed * 4;
   padding-bottom: $line-height-computed * 4;
 }
@@ -97,12 +121,7 @@ time {
 
 @include effect3();
 
-.project-image {
-  margin-bottom: $line-height-computed;
-  img {
-    @include img-responsive;
-  }
-}
+
 
 /* PORTFOLIO CATEGORIES
 -------------------------------------------------- */

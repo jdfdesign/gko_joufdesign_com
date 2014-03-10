@@ -1,6 +1,6 @@
 $theme-color: rgb(31, 197, 248);
 $theme-secondary-color: #d9d9d9;
-$th-brand-logo-height: 50px;
+$th-brand-logo-height: 130px;
 
 /* THEME MIXINS
 -------------------------------------------------- */
@@ -25,7 +25,9 @@ $th-brand-logo-height: 50px;
 @import "theme/footer";
 @import "theme/form";
 @import "theme/carousel";
+@import "theme/panel";
 @import "theme/portfolio";
+
 @import "theme/home";
 
 /* FIX FOR IE DEVICE_WIDTH BUG
@@ -55,3 +57,11 @@ $th-brand-logo-height: 50px;
     -ms-interpolation-mode: bicubic;
   }
 }
+
+.btn {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
